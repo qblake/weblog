@@ -51,3 +51,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'therubyracer'
+
+gem 'coveralls', require: false

@@ -1,4 +1,7 @@
 # Weblog
+[![Build Status](https://travis-ci.org/qblake/weblog.png)](https://travis-ci.org/qblake/weblog)
+[![Coverage Status](https://coveralls.io/repos/qblake/weblog/badge.png)](https://coveralls.io/r/qblake/weblog)
+[![Code Climate](https://codeclimate.com/github/qblake/weblog.png)](https://codeclimate.com/github/qblake/weblog)
 
 TODO: Write a gem description
 

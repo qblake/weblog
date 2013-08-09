@@ -11,7 +11,6 @@ class PostsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:posts)
   end
 
   test "should get new" do
@@ -19,12 +18,17 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create post" do
-    assert_difference('Post.count') do
-      post :create, post: {title: 'Some title'}
-    end
+  test "should edit post" do
+    get :edit, id: @post.id
+    assert_response :success
+  end
 
-    assert_redirected_to post_path(assigns(:post))
+  test "should create post" do
+    attrs = { title: 'Some title' }
+    post :create, post: attrs
+    assert_response :redirect
+    created_post = Post.find_by_title(attrs[:title])
+    assert created_post
   end
 
   test "should show post" do
@@ -33,8 +37,10 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should update post" do
-    patch :update, id: @post.id, post: {}
-    assert_redirected_to post_path(assigns(:post))
+    attrs = { title: 'Update title' }
+    patch :update, id: @post.id, post: attrs
+    assert_response :redirect
+    assert Post.find_by_title(attrs[:title]).id == @post.id
   end
 
   test "should destroy post" do

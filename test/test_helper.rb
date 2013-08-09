@@ -1,11 +1,17 @@
 ENV["RAILS_ENV"] ||= "test"
+
+if ENV["TRAVIS"]
+  require 'coveralls'
+  Coveralls.wear!('rails')
+end
+
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 require 'bundler/setup'
 
-require 'coveralls'
-Coveralls.wear!
+# require 'coveralls'
+# Coveralls.wear!
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!

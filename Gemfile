@@ -53,3 +53,5 @@ end
 gem 'therubyracer'
 
 gem 'coveralls', require: false
+
+gem "haml-rails"

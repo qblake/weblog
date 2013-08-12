@@ -3,7 +3,7 @@ require 'test_helper'
 class CommentsControllerTest < ActionController::TestCase
   setup do
     @post = posts(:two)
-       attrs = { commenter: 'Mr.Somer' }
+    attrs = { commenter: 'Mr.Somer' }
     post :create, comment: attrs, post_id: @post.id
     assert_response :redirect
     @created_comment = Comment.find_by_commenter(attrs[:commenter])
@@ -19,5 +19,6 @@ class CommentsControllerTest < ActionController::TestCase
   test "should destroy comment" do
     delete :destroy, id: @created_comment.id, post_id: @post.id
     assert !Comment.exists?(@created_comment)
+    assert_response :redirect
   end
 end

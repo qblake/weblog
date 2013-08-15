@@ -1,6 +1,7 @@
-= simple_form_for @post do |f|
-  =f.input :title , label: 'Post title'
-  =f.input :text
-  =f.button :submit
+= simple_form_for @post, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :title
+  = f.input :text
 
-  = link_to "Cancel", posts_path
+  .form-actions
+    = f.button :submit, :class => 'btn'
+    = link_to t('.cancel'), posts_path, :class => 'btn'

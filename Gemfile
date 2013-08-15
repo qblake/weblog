@@ -54,6 +54,7 @@ gem 'therubyracer'
 
 gem 'coveralls', require: false
 
-gem "haml-rails"
+gem 'haml-rails'
 
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails'
+gem 'simple_form'

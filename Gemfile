@@ -55,3 +55,5 @@ gem 'therubyracer'
 gem 'coveralls', require: false
 
 gem "haml-rails"
+
+gem "twitter-bootstrap-rails"

@@ -8,14 +8,14 @@
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:text)
       %th= model_class.human_attribute_name(:created_at)
-      %th=t '.actions', :default => t("helpers.actions")
+      %th=t '.actions'
   %tbody
     - @posts.each do |post|
       %tr
         %td= link_to post.id, post_path(post)
         %td= post.title
         %td= post.text
-        %td=l post.created_at
+        %td=l post.created_at, format: "%Y.%m.%d at %k:%M:%S"
         %td
           = link_to t('.edit'), edit_post_path(post), :class => 'btn btn-mini'
           = link_to t('.destroy'), post_path(post), :method => :delete, :data => { :confirm => t('.confirm', :default => 'Are you sure?') }, :class => 'btn btn-mini btn-danger'

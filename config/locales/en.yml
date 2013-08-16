@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  breadcrumbs:
+    application:
+      index: "Weblog"
+    posts:
+      index: "Posts"

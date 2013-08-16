@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
 
+  add_breadcrumb :index, :post_comments_path
   http_basic_authenticate_with name: "dhhh", password: "secret", only: :destroy
 
   def create

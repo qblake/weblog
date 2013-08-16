@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  add_breadcrumb :index, :posts_path
 
   http_basic_authenticate_with name: "dhhh", password: "secret", except: [:index, :show]
 
@@ -17,6 +18,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    add_breadcrumb @post.title, post_path(@post)
   end
 
   def index
@@ -25,6 +27,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    add_breadcrumb @post.title, post_path(@post)
   end
 
   def update

@@ -59,4 +59,5 @@ gem 'coveralls', require: false
 gem 'haml-rails'
 
 gem 'twitter-bootstrap-rails'
-gem 'simple_form'
+gem 'simple_form', '3.0.0.rc'
+gem 'state_machine'

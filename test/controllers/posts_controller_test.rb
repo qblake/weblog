@@ -37,7 +37,7 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should update post" do
-    attrs = { title: 'Update title' }
+    attrs = { title: 'Update title', state_event: 'publish' }
     patch :update, id: @post.id, post: attrs
     assert_response :redirect
     assert Post.find_by_title(attrs[:title]).id == @post.id

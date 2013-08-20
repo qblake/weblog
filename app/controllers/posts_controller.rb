@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
   def create
     # render text: params[:post].inspect
-    @post = Post.new(params[:post].permit(:title, :text))
+    @post = PostEditType.new(params[:post].permit(:title, :text, :state_event))
     if @post.save
       redirect_to @post
     else

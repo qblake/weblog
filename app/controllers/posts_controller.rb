@@ -4,8 +4,9 @@ class PostsController < ApplicationController
   http_basic_authenticate_with name: "dhhh", password: "secret", except: [:index, :show]
 
   def new
-    @post = Post.new
+    @post = PostEditType.new
   end
+
   def create
     # render text: params[:post].inspect
     @post = Post.new(params[:post].permit(:title, :text))

@@ -40,7 +40,9 @@ class PostsControllerTest < ActionController::TestCase
     attrs = { title: 'Update title', state_event: 'publish' }
     patch :update, id: @post.id, post: attrs
     assert_response :redirect
-    assert Post.find_by_title(attrs[:title]).id == @post.id
+    updated_post = Post.find_by_title(attrs[:title])
+    assert updated_post
+    assert updated_post.published?
   end
 
   test "should destroy post" do

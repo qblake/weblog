@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = PostEditType.find(params[:id])
     # raise params.inspect
     if @post.update(params[:post].permit(:title, :text, :state_event))
       redirect_to @post

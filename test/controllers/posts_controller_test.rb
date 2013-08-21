@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
   setup do
-    @post = posts(:two)
+    @post = posts(:two) #FIXME use factory girl
     @request.env['HTTP_AUTHORIZATION'] =
       ActionController::HttpAuthentication::
       Basic.encode_credentials("dhhh", "secret")

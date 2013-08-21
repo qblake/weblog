@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
   def create
     # render text: params[:post].inspect
-    @post = PostEditType.new(params[:post].permit(:title, :text, :state_event))
+    @post = PostEditType.new(params[:post])
     if @post.save
       redirect_to @post
     else
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   def update
     @post = PostEditType.find(params[:id])
     # raise params.inspect
-    if @post.update(params[:post].permit(:title, :text, :state_event))
+    if @post.update(params[:post])
       redirect_to @post
     else
       # p @post.errors
@@ -49,8 +49,4 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
-  private
-  def post_params
-    params.require(:post).permit(:title, :text)
-  end
 end

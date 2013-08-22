@@ -15,8 +15,9 @@
 / = render @post.comments
 = render "comments/comment"
 
-%h2 Add a comment:
-= render "comments/form"
+- if @post.published?
+  %h2 Add a comment:
+  = render "comments/form"
 
 .form-actions
   = link_to t('.back'), posts_path, :class => 'btn'

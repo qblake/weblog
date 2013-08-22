@@ -18,16 +18,16 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = resource_post
     add_breadcrumb @post.title, post_path(@post)
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all #FIXME use Post.web
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = resource_post
     add_breadcrumb @post.title, post_path(@post)
   end
 
@@ -43,10 +43,14 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = resource_post
     @post.destroy
 
     redirect_to posts_path
+  end
+
+  def resource_post
+    Post.find(params[:id])
   end
 
 end

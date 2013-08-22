@@ -2,7 +2,9 @@ require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
   setup do
-    @post = posts(:two) #FIXME use factory girl
+    @attrs = attributes_for :post
+    @post = create :post
+
     @request.env['HTTP_AUTHORIZATION'] =
       ActionController::HttpAuthentication::
       Basic.encode_credentials("dhhh", "secret")
@@ -24,10 +26,11 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should create post" do
-    attrs = { title: 'Some title' }
-    post :create, post: attrs
+    post :create, post: @attrs
     assert_response :redirect
-    created_post = Post.find_by_title(attrs[:title])
+
+    #TODO разобраться с использованием .extract!()
+    created_post = Post.where(@attrs.extract!(:title)).first
     assert created_post
   end
 
@@ -37,19 +40,18 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should update post" do
-    attrs = { title: 'Update title', state_event: 'publish' }
-    patch :update, id: @post.id, post: attrs
+    patch :update, id: @post.id, post: @attrs
     assert_response :redirect
-    updated_post = Post.find_by_title(attrs[:title])
-    assert updated_post
-    assert updated_post.published?
+
+    @post.reload
+
+    assert @attrs[:title] == @post.title
   end
 
   test "should destroy post" do
-    assert_difference('Post.count', -1) do
-      delete :destroy, id: @post.id
-    end
+    delete :destroy, id: @post.id
+    assert_response :redirect
 
-    assert_redirected_to posts_path
+    assert !Post.exists?(@post)
   end
 end

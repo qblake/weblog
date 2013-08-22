@@ -7,6 +7,7 @@ gem 'rails', '4.0.0'
 #gem 'sqlite3'
 group :development do
   gem 'sqlite3'
+  gem 'spring'
 end
 group :production do
   gem 'pg'
@@ -61,3 +62,7 @@ gem 'haml-rails'
 gem 'twitter-bootstrap-rails'
 gem 'simple_form', '3.0.0.rc'
 gem 'state_machine'
+
+group :test, :development do
+  gem 'factory_girl_rails'
+end

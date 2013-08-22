@@ -45,6 +45,11 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -109,6 +114,7 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
+    spring (0.0.10)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -148,6 +154,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   coveralls
+  factory_girl_rails
   haml-rails
   jbuilder (~> 1.2)
   jquery-rails
@@ -157,6 +164,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   sdoc
   simple_form (= 3.0.0.rc)
+  spring
   sqlite3
   state_machine
   therubyracer

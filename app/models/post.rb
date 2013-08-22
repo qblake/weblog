@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
-  state_machine :state, :initial => :published do
+  state_machine :state, :initial => :unpublished do
     state :published
     state :unpublished
 

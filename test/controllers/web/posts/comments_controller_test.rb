@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CommentsControllerTest < ActionController::TestCase
+class Web::Posts::CommentsControllerTest < ActionController::TestCase
   setup do
     @post = create :post
 

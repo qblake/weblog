@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class Web::PostsController < Web::ApplicationController
   add_breadcrumb :index, :posts_path
 
   http_basic_authenticate_with name: "dhhh", password: "secret", except: [:index, :show]
@@ -49,6 +49,7 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  private
   def resource_post
     Post.find(params[:id])
   end

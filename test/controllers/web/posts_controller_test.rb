@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PostsControllerTest < ActionController::TestCase
+class Web::PostsControllerTest < ActionController::TestCase
   setup do
     @attrs = attributes_for :post
     @post = create :post

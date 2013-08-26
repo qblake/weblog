@@ -24,5 +24,6 @@ en:
   breadcrumbs:
     application:
       index: "Weblog"
-    posts:
-      index: "Posts"
+    web:
+      posts:
+        index: "Posts"

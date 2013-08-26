@@ -1,4 +1,4 @@
-class CommentEditType < Comment
+class CommentEditType < Post::Comment
   include ApplicationType
 
   permit :commenter, :body

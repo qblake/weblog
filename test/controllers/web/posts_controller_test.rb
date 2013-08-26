@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PostsControllerTest < ActionController::TestCase
+class Web::PostsControllerTest < ActionController::TestCase
   setup do
     @attrs = attributes_for :post
     @post = create :post
@@ -29,8 +29,7 @@ class PostsControllerTest < ActionController::TestCase
     post :create, post: @attrs
     assert_response :redirect
 
-    #TODO разобраться с использованием .extract!()
-    created_post = Post.where(@attrs.extract!(:title)).first
+    created_post = Post.where(@attrs.extract(:title)).first
     assert created_post
   end
 

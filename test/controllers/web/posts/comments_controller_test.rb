@@ -15,8 +15,7 @@ class Web::Posts::CommentsControllerTest < ActionController::TestCase
     post :create, comment: attrs, post_id: @post
     assert_response :redirect
 
-    #TODO разобраться с использованием .extract!()
-    created_comment = Post::Comment.where(attrs.extract!(:commenter)).first
+    created_comment = Post::Comment.where(attrs.extract(:commenter)).first
     assert created_comment
 
     assert @post.comments.include?(created_comment)

@@ -29,8 +29,7 @@ class Web::PostsControllerTest < ActionController::TestCase
     post :create, post: @attrs
     assert_response :redirect
 
-    #TODO разобраться с использованием .extract!()
-    created_post = Post.where(@attrs.extract!(:title)).first
+    created_post = Post.where(@attrs.extract(:title)).first
     assert created_post
   end
 

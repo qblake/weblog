@@ -13,11 +13,11 @@
 
 %h2 Comments
 / = render @post.comments
-= render "web/comments/comment"
+= render "web/posts/comments/comment"
 
 - if @post.published?
   %h2 Add a comment:
-  = render "web/comments/form"
+  = render "web/posts/comments/form"
 
 .form-actions
   = link_to t('.back'), posts_path, :class => 'btn'

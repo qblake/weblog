@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :comment do
+  factory 'post/comment' do
     commenter { generate :string }
     body  { generate :string }
     # association :post, factory: :post

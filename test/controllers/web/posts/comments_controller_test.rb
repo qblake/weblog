@@ -10,20 +10,20 @@ class Web::Posts::CommentsControllerTest < ActionController::TestCase
   end
 
   test "should create comment" do
-    attrs = attributes_for :comment
+    attrs = attributes_for 'post/comment'
 
     post :create, comment: attrs, post_id: @post
     assert_response :redirect
 
     #TODO разобраться с использованием .extract!()
-    created_comment = Comment.where(attrs.extract!(:commenter)).first
+    created_comment = Post::Comment.where(attrs.extract!(:commenter)).first
     assert created_comment
 
     assert @post.comments.include?(created_comment)
   end
 
   test "should destroy comment" do
-    @comment = create :comment, post: @post
+    @comment = create 'post/comment', post: @post
 
     delete :destroy, id: @comment.id, post_id: @post.id
     assert_response :redirect

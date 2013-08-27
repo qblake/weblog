@@ -9,6 +9,7 @@
     %tr
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:state)
+      %th= model_class.human_attribute_name(:picture)
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:text)
       %th= model_class.human_attribute_name(:created_at)
@@ -17,7 +18,11 @@
     - @posts.each do |post|
       %tr
         %td= link_to post.id, post_path(post)
-        %td= post.state
+        %td= post.human_state_name
+        %td
+          - if post.picture?
+            .thumbnail
+              = image_tag post.picture.thumb
         %td= post.title
         %td= post.text
         %td= l post.created_at, format: :short

@@ -2,6 +2,7 @@
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.titleize
 
+= image_tag @post.picture
 %p
   %strong= model_class.human_attribute_name(:title) + ':'
   %br

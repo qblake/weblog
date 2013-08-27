@@ -4,15 +4,15 @@ class Web::Posts::CommentsController < Web::Posts::ApplicationController
   http_basic_authenticate_with name: "dhhh", password: "secret", only: :destroy
 
   def create
-    comment = CommentEditType.new(params[:comment])
+    comment = CommentEditType.new(params[:post_comment])
     comment.post = resource_post
     comment.save
-    redirect_to post_path(@post)
+    redirect_to post_path(resource_post)
   end
   def destroy
     @comment = resource_post.comments.find(params[:id])
     @comment.destroy
-    redirect_to post_path(@post)
+    redirect_to post_path(resource_post)
   end
 
 end

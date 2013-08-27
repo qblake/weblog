@@ -27,3 +27,12 @@ en:
     web:
       posts:
         index: "Posts"
+  web:
+    posts:
+      index:
+        confirm: "Are you sure?"
+      show:
+        confirm: "Are you sure?"
+      comments:
+        comment:
+          confirm: "Are you sure?"

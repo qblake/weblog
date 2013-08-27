@@ -11,8 +11,8 @@
         %tr
           %td= comment.commenter
           %td= comment.body
-          %td=l comment.created_at, format: "%Y.%m.%d at %k:%M:%S"
+          %td=l comment.created_at, format: :short
           %td
-            = link_to t('.destroy'), post_comment_path(@post, comment), :method => :delete, :data => { :confirm => t('.confirm', :default => 'Are you sure?') }, :class => 'btn btn-mini btn-danger'
+            = link_to t('.destroy'), post_comment_path(@post, comment), method: :delete, data:  { confirm:  t('.confirm') }, class: 'btn btn-mini btn-danger'
 - else
   %p no comments

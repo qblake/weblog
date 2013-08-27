@@ -1,6 +1,6 @@
 - model_class = Post
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+  %h1=t '.title', default: model_class.model_name.human.pluralize.titleize
 
 / = paginate @posts
 
@@ -27,7 +27,7 @@
         %td= post.text
         %td= l post.created_at, format: :short
         %td
-          = link_to t('.edit'), edit_post_path(post), :class => 'btn btn-mini'
-          = link_to t('.destroy'), post_path(post), :method => :delete, :data => { :confirm => t('.confirm', :default => 'Are you sure?') }, :class => 'btn btn-mini btn-danger'
+          = link_to t('.edit'), edit_post_path(post), class: 'btn btn-mini'
+          = link_to t('.destroy'), post_path(post), method: :delete, data: { confirm: t('.confirm') }, class: 'btn btn-mini btn-danger'
 
-= link_to t('.new'), new_post_path, :class => 'btn btn-primary'
+= link_to t('.new'), new_post_path, class: 'btn btn-primary'

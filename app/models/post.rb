@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
-  state_machine :state, :initial => :unpublished do
+  state_machine :state, initial: :unpublished do
     state :published
     state :unpublished
 

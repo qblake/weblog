@@ -1,6 +1,6 @@
 - model_class = Post
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.titleize
+  %h1=t '.title', default: model_class.model_name.human.titleize
 
 = image_tag @post.picture
 %p
@@ -21,6 +21,6 @@
   = render "web/posts/comments/form"
 
 .form-actions
-  = link_to t('.back'), posts_path, :class => 'btn'
-  = link_to t('.edit'), edit_post_path(@post), :class => 'btn'
-  = link_to t('.destroy',), post_path(@post), :method => "delete", :data => { :confirm => t('.confirm', :default => 'Are you sure?') }, :class => 'btn btn-danger'
+  = link_to t('.back'), posts_path, class: 'btn'
+  = link_to t('.edit'), edit_post_path(@post), class: 'btn'
+  = link_to t('.destroy',), post_path(@post), method: "delete", data: { confirm: t('.confirm') }, class: 'btn btn-danger'

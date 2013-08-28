@@ -24,7 +24,7 @@ class Web::PostsController < Web::ApplicationController
   end
 
   def index
-    @posts = Post.all #FIXME use Post.web
+    @posts = Post.all.page(params[:page])#FIXME use Post.web
   end
 
   def edit

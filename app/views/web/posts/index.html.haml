@@ -2,7 +2,7 @@
 .page-header
   %h1=t '.title', default: model_class.model_name.human.pluralize.titleize
 
-/ = paginate @posts
+= paginate @posts
 
 %table.table.table-striped
   %thead
@@ -29,5 +29,7 @@
         %td
           = link_to t('.edit'), edit_post_path(post), class: 'btn btn-mini'
           = link_to t('.destroy'), post_path(post), method: :delete, data: { confirm: t('.confirm') }, class: 'btn btn-mini btn-danger'
+
+= paginate @posts
 
 = link_to t('.new'), new_post_path, class: 'btn btn-primary'

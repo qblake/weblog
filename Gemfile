@@ -73,3 +73,4 @@ gem 'mini_magick'
 
 gem 'ancestry'
 gem 'wrong'
+gem 'kaminari'

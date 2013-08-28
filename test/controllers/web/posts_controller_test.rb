@@ -30,7 +30,7 @@ class Web::PostsControllerTest < ActionController::TestCase
     assert_response :redirect
 
     created_post = Post.where(@attrs.extract(:title)).first
-    assert created_post
+    assert { created_post }
   end
 
   test "should show post" do
@@ -44,13 +44,13 @@ class Web::PostsControllerTest < ActionController::TestCase
 
     @post.reload
 
-    assert @attrs[:title] == @post.title
+    assert { @attrs[:title] == @post.title }
   end
 
   test "should destroy post" do
     delete :destroy, id: @post.id
     assert_response :redirect
 
-    assert !Post.exists?(@post)
+    assert { !Post.exists?(@post) }
   end
 end

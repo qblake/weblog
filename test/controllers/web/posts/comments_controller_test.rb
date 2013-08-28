@@ -12,13 +12,13 @@ class Web::Posts::CommentsControllerTest < ActionController::TestCase
   test "should create comment" do
     attrs = attributes_for 'post/comment'
 
-    post :create, comment: attrs, post_id: @post
+    post :create, post_comment: attrs, post_id: @post
     assert_response :redirect
 
     created_comment = Post::Comment.where(attrs.extract(:commenter)).first
-    assert created_comment
+    assert { created_comment }
 
-    assert @post.comments.include?(created_comment)
+    assert { @post.comments.include?(created_comment) }
   end
 
   test "should destroy comment" do
@@ -27,6 +27,6 @@ class Web::Posts::CommentsControllerTest < ActionController::TestCase
     delete :destroy, id: @comment.id, post_id: @post.id
     assert_response :redirect
 
-    assert !@post.comments.include?(@comment)
+    assert { !@post.comments.include?(@comment) }
   end
 end

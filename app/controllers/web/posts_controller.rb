@@ -19,6 +19,7 @@ class Web::PostsController < Web::ApplicationController
 
   def show
     @post = resource_post
+    @comment = CommentEditType.new()
     add_breadcrumb @post.title, post_path(@post)
   end
 

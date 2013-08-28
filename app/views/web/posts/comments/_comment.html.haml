@@ -2,17 +2,22 @@
   %table.table.table-striped
     %thead
       %tr
+        %th= :id
         %th= :commenter #model_class.human_attribute_name(:commenter)
         %th= :body #model_class.human_attribute_name(:body)
         %th= :created_at #model_class.human_attribute_name(:created_at)
+        %th= :parent_id
         %th=t '.actions'
     %tbody
       - @post.comments.each do |comment|
         %tr
+          %td= comment.id
           %td= comment.commenter
           %td= comment.body
           %td=l comment.created_at, format: :short
+          %td= comment.parent_id
           %td
             = link_to t('.destroy'), post_comment_path(@post, comment), method: :delete, data:  { confirm:  t('.confirm') }, class: 'btn btn-mini btn-danger'
+            = link_to t('.reply'), new_post_comment_path(@post, parent_id: comment), class: 'btn btn-mini'
 - else
   %p no comments

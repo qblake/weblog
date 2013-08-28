@@ -3,7 +3,7 @@ Weblog::Application.routes.draw do
   scope module: :web do
     resources :posts do
       scope module: :posts do
-        resources :comments
+        resources :comments, only: [:new, :create, :destroy]
       end
     end
     root 'welcome#index'

@@ -9,6 +9,11 @@ class Web::Posts::CommentsControllerTest < ActionController::TestCase
       Basic.encode_credentials("dhhh", "secret")
   end
 
+  test "should get new" do
+    get :new, post_id: @post
+    assert_response :success
+  end
+
   test "should create comment" do
     attrs = attributes_for 'post/comment'
 

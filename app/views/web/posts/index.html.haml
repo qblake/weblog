@@ -13,6 +13,7 @@
       %th= model_class.human_attribute_name(:title)
       %th= model_class.human_attribute_name(:text)
       %th= model_class.human_attribute_name(:created_at)
+      %th=t ('.comments')
       %th=t ('.actions')
   %tbody
     - @posts.each do |post|
@@ -26,6 +27,7 @@
         %td= post.title
         %td= post.text
         %td= l post.created_at, format: :short
+        %td= post.comments_count
         %td
           = link_to t('.edit'), edit_post_path(post), class: 'btn btn-mini'
           = link_to t('.destroy'), post_path(post), method: :delete, data: { confirm: t('.confirm') }, class: 'btn btn-mini btn-danger'

@@ -26,7 +26,7 @@ class Web::PostsController < Web::ApplicationController
   def index
     query = { s: 'created_at desc' }.merge(params[:q] || {})
     @q = Post.ransack(query) #FIXME use Post.web.ransack(query)
-    @posts = @q.result.page(params[:page])
+    @posts = @q.result.page(params[:page]).decorate
   end
 
   def edit

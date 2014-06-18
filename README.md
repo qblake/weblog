@@ -8,4 +8,4 @@
 
 ## Contributing
 
-see [CONTRIBUTING.md][CONTRIBUTING]
+see [CONTRIBUTING.md](CONTRIBUTING.md)

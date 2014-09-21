@@ -66,3 +66,13 @@ gem 'state_machine'
 group :test, :development do
   gem 'factory_girl_rails'
 end
+
+gem 'carrierwave'
+# gem "fog", "~> 1.3.1"
+gem 'mini_magick'
+
+gem 'ancestry'
+gem 'wrong'
+gem 'kaminari'
+gem 'ransack'
+gem 'draper'

@@ -24,5 +24,16 @@ en:
   breadcrumbs:
     application:
       index: "Weblog"
+    web:
+      posts:
+        index: "Posts"
+  web:
     posts:
-      index: "Posts"
+      index:
+        confirm: "Are you sure?"
+        comment: "Comment"
+      show:
+        confirm: "Are you sure?"
+      comments:
+        comment:
+          confirm: "Are you sure?"

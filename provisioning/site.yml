@@ -1,0 +1,70 @@
+---
+  - hosts: all
+
+    vars:
+      postgresql:
+        version: 9.3
+        password: some_password
+        database: weblog_development
+
+
+    tasks:
+      -
+        name: import repository key
+        shell: wget -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+
+      -
+        name: add repository
+        sudo: true
+        copy: src=files/pgdg.list dest=/etc/apt/sources.list.d/pgdg.list
+
+      -
+        name: install packages
+        apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time=3600
+        sudo: true
+        with_items:
+          - curl
+          - vim
+          - git
+          - runit
+          - postgresql
+          - libpq-dev
+          - python-psycopg2
+          - redis-server
+          - imagemagick
+
+      -
+        name: install RVM and Ruby and Rails
+        shell: curl -sSL https://get.rvm.io | bash -s stable --ruby --rails --autolibs=enabled creates=~/.rvm/bin/ruby
+
+      -
+        name: install Heroku Toolbet
+        shell: wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+
+      -
+        name: update client configuration
+        sudo: true
+        copy: src=files/pg_hba.conf dest=/etc/postgresql/{{postgresql.version}}/main/pg_hba.conf
+        notify:
+          - restart postgresql
+
+      -
+        meta: flush_handlers
+
+      -
+        name: create postgres user
+        postgresql_user:
+          name=weblog
+          password={{ postgresql.password }}
+
+      -
+        name: create weblog dev db
+        postgresql_db:
+          name={{ postgresql.database }}
+
+
+    handlers:
+      -
+        name: restart postgresql
+        sudo: true
+        service: name=postgresql state=restarted

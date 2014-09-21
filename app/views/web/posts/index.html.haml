@@ -1,0 +1,37 @@
+- model_class = Post
+.page-header
+  %h1=t '.title', default: model_class.model_name.human.pluralize.titleize
+
+= paginate @posts
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:state)
+      %th= model_class.human_attribute_name(:picture)
+      %th= model_class.human_attribute_name(:title)
+      %th= model_class.human_attribute_name(:text)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t ('.comments')
+      %th=t ('.actions')
+  %tbody
+    - @posts.each do |post|
+      %tr
+        %td= link_to post.id, post_path(post)
+        %td= post.human_state_name
+        %td
+          - if post.picture?
+            .thumbnail
+              = image_tag post.picture.thumb
+        %td= post.title
+        %td= post.text
+        %td= l post.created_at, format: :short
+        %td= post.comments_count
+        %td
+          = link_to t('.edit'), edit_post_path(post), class: 'btn btn-mini'
+          = link_to t('.destroy'), post_path(post), method: :delete, data: { confirm: t('.confirm') }, class: 'btn btn-mini btn-danger'
+
+= paginate @posts
+
+= link_to t('.new'), new_post_path, class: 'btn btn-primary'

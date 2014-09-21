@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class Web::PostsController < Web::ApplicationController
   add_breadcrumb :index, :posts_path
 
   http_basic_authenticate_with name: "dhhh", password: "secret", except: [:index, :show]
@@ -19,11 +19,14 @@ class PostsController < ApplicationController
 
   def show
     @post = resource_post
+    @comment = CommentEditType.new()
     add_breadcrumb @post.title, post_path(@post)
   end
 
   def index
-    @posts = Post.all #FIXME use Post.web
+    query = { s: 'created_at desc' }.merge(params[:q] || {})
+    @q = Post.ransack(query) #FIXME use Post.web.ransack(query)
+    @posts = @q.result.page(params[:page]).decorate
   end
 
   def edit
@@ -49,6 +52,7 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  private
   def resource_post
     Post.find(params[:id])
   end

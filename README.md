@@ -15,14 +15,15 @@
 
 ### Run
 
-1. vagrunt up.
+0. go to dir with this project.
+1. run `vagrunt up`.
 Wait until box will be downloaded from server.
 Wait.
-2. vagrant ssh
-3. cd /weblog
-4. bundle
-5. rake db:create db:migrate
-6.  rails s
+2. run `vagrant ssh`
+3. run `cd /weblog`
+4. run `bundle`
+5. run `rake db:create db:migrate`
+6. run `rails s`
 7. open http://localhost:3000 in browser
 
 ## Links

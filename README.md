@@ -16,7 +16,7 @@
 ### Run
 
 0. go to dir with this project.
-1. run `vagrunt up`.
+1. run `vagrant up`.
 Wait until box will be downloaded from server.
 Wait.
 2. run `vagrant ssh`
